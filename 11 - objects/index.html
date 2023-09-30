@@ -6,6 +6,43 @@
     <title>Document</title>
 </head>
 <body>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Calcul de l'âge</title>
+</head>
+<body>
+    <h1>Calcul de l'âge</h1>
+    <form id="ageCalculatorForm">
+        <label for="birthdate">Date de naissance :</label>
+        <input type="date" id="birthdate" required>
+        <button type="button" onclick="calculerAge()">Calculer l'âge</button>
+    </form>
+    <p id="resultatAge"></p>
+
+    <script>
+        function calculerAge() {
+            // Récupérez la date de naissance depuis le formulaire
+            var dateNaissance = new Date(document.getElementById("birthdate").value);
+
+            // Récupérez la date actuelle
+            var dateActuelle = new Date();
+
+            // Calculez l'âge en soustrayant l'année de naissance de l'année actuelle
+            var age = dateActuelle.getFullYear() - dateNaissance.getFullYear();
+
+            // Vérifiez si l'anniversaire de l'utilisateur n'a pas encore eu lieu cette année
+            if (dateActuelle.getMonth() < dateNaissance.getMonth() || (dateActuelle.getMonth() === dateNaissance.getMonth() && dateActuelle.getDate() < dateNaissance.getDate())) {
+                age--;
+            }
+
+            // Affichez l'âge calculé
+            document.getElementById("resultatAge").textContent = "Votre âge est : " + age + " ans";
+        }
+    </script>
+</body>
+</html>
+
     
     <script src="js/exercice1.js"></script>
     <script src="js/exercice2.js"></script>
